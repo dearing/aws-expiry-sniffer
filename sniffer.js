@@ -26,6 +26,7 @@ The seance cookie decoded is an object as below:
   "exp": 1445813887000
 }
 */
+var obj
 
 // create a channel to exchange information to the background.js
 var port = chrome.runtime.connect({
@@ -37,10 +38,15 @@ function handleCookies(element, index, array) {
     //console.log(obj)
 
     var myDate = new Date(obj.exp);
-    console.log("credentials expire at " + myDate.toTimeString())
+    var expires = myDate.toLocaleTimeString() + ' ' + myDate.toLocaleDateString()
 
     // TODO: edit the page contents
-    document.title = myDate.toTimeString()
+    console.log("credentials expire at " + expires)
+    // document.title = expires
+
+    var section = document.getElementById('awsc-login-account-section'), child = document.createElement('div');
+    child.innerHTML = '<div id="awsc-login-display-name-label-expires" class="awsc-username-display-name-label">Expires: ' + expires + '</div>'
+    section.insertBefore(child, section.firstChild);
 
 }
 
