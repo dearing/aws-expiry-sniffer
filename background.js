@@ -1,7 +1,3 @@
-chrome.cookies.onChanged.addListener(function(info) {
-    console.log("onChanged" + JSON.stringify(info));
-});
-
 if (!chrome.cookies) {
     chrome.cookies = chrome.experimental.cookies;
 }
@@ -20,7 +16,7 @@ function getCookies(domain, name, callback) {
 // add a listener for incoming requests for cookies
 chrome.runtime.onConnect.addListener(function(port) {
 
-	// react to requests on 'exchange' only
+    // react to requests on 'exchange' only
     console.assert(port.name == "exchange");
 
     // function to use the supplied cookie filters
