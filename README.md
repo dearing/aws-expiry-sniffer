@@ -75,7 +75,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
 
-[chrome-extentions]: chrome://extensions/
 [changelog]: https://github.com/dearing/aws-sniffer/blob/master/CHANGELOG.md
 [issues]: https://github.com/dearing/aws-sniffer/issues
 [releases]: https://github.com/dearing/aws-sniffer/releases
