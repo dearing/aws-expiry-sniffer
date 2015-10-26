@@ -37,19 +37,19 @@ function handleCookies(element) {
     console.log(warnDelay)
 
     window.setTimeout(function() {
-            notifyRequest.postMessage({
-                message: "Your AWS session will expire in 5 minutes."
-            })
-        }, warnDelay)
-    }
+        notifyRequest.postMessage({
+            message: "Your AWS session will expire in 5 minutes."
+        })
+    }, warnDelay)
+}
 
-    // we should get only one cookie but I wanted to keep this easy to hack
-    cookieRequest.onMessage.addListener(function(msg) {
-        msg.forEach(handleCookies)
-    });
+// we should get only one cookie but I wanted to keep this easy to hack
+cookieRequest.onMessage.addListener(function(msg) {
+    msg.forEach(handleCookies)
+});
 
-    // call for the seance cookie for this domain
-    cookieRequest.postMessage({
-        domain: "console.aws.amazon.com",
-        name: "seance"
-    })
+// call for the seance cookie for this domain
+cookieRequest.postMessage({
+    domain: "console.aws.amazon.com",
+    name: "seance"
+})
