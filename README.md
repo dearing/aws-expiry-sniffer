@@ -12,7 +12,7 @@ Published
 
 About
 ---------
-When working with federated logins with AWS you may find the 1 hour time out token annoying. So this extension will signal the `background.js` to for a particular cookie and extract the `"exp"` value, format it into something human readable, and when those credentials will expire under the account pulldown at the console.
+When working with federated logins with AWS you may find the 1 hour time out token annoying. So this extension will signal the `background.js` to for a particular cookie and extract the `"exp"` value, format it into something human readable, and insert that the account pulldown at the console.
 
 ```javascript
 {
@@ -29,7 +29,8 @@ When working with federated logins with AWS you may find the 1 hour time out tok
   "exp": 1445813887000
 }
 ```
-
+Fork this for more elaborate needs.
+  
 Install
 ---------
 - fork, clone to a working folder.
