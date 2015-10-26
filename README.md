@@ -33,9 +33,16 @@ Fork this for more elaborate needs.
   
 Install
 ---------
-- fork, clone to a working folder.
-- load unpacked extension with chrome via chrome://extensions/ with developer mode enabled
-- visit a AWS Console page verify the cookie was sniffed out
+From Source: 
+  - fork, clone to a working folder.
+  - enable developer mode then load the unpacked extension in Chrome via chrome://extensions/
+  - customize to taste and reload the extension
+
+From Release:
+  - visit [releases] and download the crx file and drop it into your chrome://extensions/ page
+
+Finally:
+  - visit a AWS Console page verify the cookie was sniffed out by clicking the account pulldown
 
 TODO & Help Wanted
 ------------
