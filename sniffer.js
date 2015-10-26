@@ -1,7 +1,4 @@
-/*
-
-The seance cookie decoded is an object as below:
-
+/*  The seance cookie decoded is an object as below:
 {
   "accountId": "REDACTED-AWS-ACCOUNT",
   "iam": true,
@@ -9,54 +6,50 @@ The seance cookie decoded is an object as below:
     "AWSCodeCommit",
     "AWSCodeDeploy",
     "AWSCodePipeline",
-    "AWSServiceCatalog",
-    "AmazonEC2",
-    "AmazonRDS",
-    "AmazonWAM",
-    "ResourceAllocationService",
-    "cloudformation",
-    "codecommit",
-    "codedeploy",
-    "codepipeline",
-    "ec2",
-    "marketplace",
+    ...
     "servicecatalog"
   ],
   "status": "ACTIVE",
   "exp": 1445813887000
 }
 */
-var obj
 
-// create a channel to exchange information to the background.js
-var port = chrome.runtime.connect({
-    name: "exchange"
+var cookieRequest = chrome.runtime.connect({
+    name: "cookie"
+});
+var notifyRequest = chrome.runtime.connect({
+    name: "notify"
 });
 
-function handleCookies(element, index, array) {
-    obj = JSON.parse(decodeURIComponent(element.value));
-    //console.log(obj)
+function handleCookies(element) {
+    myDate = new Date(JSON.parse(decodeURIComponent(element.value)).exp);
+    var expires = myDate.toLocaleDateString() + ' ' + myDate.toLocaleTimeString()
 
-    var myDate = new Date(obj.exp);
-    var expires = myDate.toLocaleTimeString() + ' ' + myDate.toLocaleDateString()
-
-    // TODO: edit the page contents
     console.log("credentials expire at " + expires)
-    // document.title = expires
 
-    var section = document.getElementById('awsc-login-account-section'), child = document.createElement('div');
+    // inject this expires string cleanly into the account pull down tab
+    var section = document.getElementById('awsc-login-account-section'),
+        child = document.createElement('div');
     child.innerHTML = '<div id="awsc-login-display-name-label-expires" class="awsc-username-display-name-label">Expires: ' + expires + '</div>'
     section.insertBefore(child, section.firstChild);
 
-}
+    warnDelay = (myDate - Date.now()) - 300000
+    console.log(warnDelay)
 
-// we should get only one cookie but I wanted to keep this easy to hack
-port.onMessage.addListener(function(msg) {
-    msg.forEach(handleCookies)
-});
+    window.setTimeout(function() {
+            notifyRequest.postMessage({
+                message: "Your AWS session will expire in 5 minutes."
+            })
+        }, warnDelay)
+    }
 
-// call for the seance cookie for this domain
-port.postMessage({
-    domain: "console.aws.amazon.com",
-    name: "seance"
-})
+    // we should get only one cookie but I wanted to keep this easy to hack
+    cookieRequest.onMessage.addListener(function(msg) {
+        msg.forEach(handleCookies)
+    });
+
+    // call for the seance cookie for this domain
+    cookieRequest.postMessage({
+        domain: "console.aws.amazon.com",
+        name: "seance"
+    })
