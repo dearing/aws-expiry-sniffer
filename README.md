@@ -1,6 +1,8 @@
 AWS Expiry Sniffer
 ============
 
+*intended to be forked and customized to taste*
+
 [![forthebadge](http://forthebadge.com/images/badges/for-sharks.svg)](http://forthebadge.com)
 
 Published
