@@ -1,7 +1,3 @@
-if (!chrome.cookies) {
-    chrome.cookies = chrome.experimental.cookies;
-}
-
 // add a listener for incoming requests for cookies
 chrome.runtime.onConnect.addListener(function(port) {
 
