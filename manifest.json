@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "aws-sniffer",
-  "description": "extracts the session data in AWS console",
-  "version": "1.0.1",
+  "name": "AWS Expiry Sniffer",
+  "description": "Extracts the expiry data from current credential in AWS console 'seance' cookie",
+  "version": "1.0.2",
   "browser_action": {
-    "default_name": "AWS Sniffer",
+    "default_name": "AWS Expiry Sniffer",
     "default_icon": "icon.png"
   },
   "icons": {
