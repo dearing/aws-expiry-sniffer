@@ -2,9 +2,13 @@
   "manifest_version": 2,
   "name": "aws-sniffer",
   "description": "extracts the session data in AWS console",
-  "version": "1.0",
+  "version": "1.0.1",
   "browser_action": {
+    "default_name": "AWS Sniffer",
     "default_icon": "icon.png"
+  },
+  "icons": {
+    "128": "icon.png"
   },
   "background": {
     "scripts": [
