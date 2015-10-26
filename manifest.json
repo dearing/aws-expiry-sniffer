@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "AWS Expiry Sniffer",
   "description": "Extracts the expiry data from current credential in AWS console 'seance' cookie",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "browser_action": {
     "default_name": "AWS Expiry Sniffer",
     "default_icon": "icon.png"
@@ -28,6 +28,7 @@
   "permissions": [
     "activeTab",
     "cookies",
+    "notifications",
     "*://console.aws.amazon.com/*"
   ]
 }

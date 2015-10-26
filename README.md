@@ -12,7 +12,7 @@ Published
 
 About
 ---------
-When working with federated logins with AWS you may find the 1 hour time out token annoying. So this extension will signal the `background.js` to for a particular cookie and extract the `"exp"` value, format it into something human readable, and insert that the account pulldown at the console.
+When working with federated logins with AWS you may find the 1 hour time out token annoying. So this extension will signal the `background.js` to for a particular cookie and extract the `"exp"` value, format it into something human readable, and insert that the account pulldown at the console.  Finally, a timeout function is calculated to 5 minutes before the session exipiration to display a desktop notification.
 
 ```javascript
 {
