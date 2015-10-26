@@ -2,17 +2,6 @@ if (!chrome.cookies) {
     chrome.cookies = chrome.experimental.cookies;
 }
 
-function getCookies(domain, name, callback) {
-    chrome.cookies.get({
-        "url": domain,
-        "name": name
-    }, function(cookie) {
-        if (callback) {
-            callback(cookie.value);
-        }
-    });
-}
-
 // add a listener for incoming requests for cookies
 chrome.runtime.onConnect.addListener(function(port) {
 
