@@ -1,4 +1,4 @@
-AWS Sniffer
+AWS Expiry Sniffer
 ============
 
 [![forthebadge](http://forthebadge.com/images/badges/for-sharks.svg)](http://forthebadge.com)
