@@ -1,6 +1,10 @@
 # AWS Expiry Sniffer
 goto [releases]
 
+## [unreleased]
+- linting
+- documentation updates
+
 ## [v1.0.3]
 #### Changed
 - use desktop notifications for warning of expiring session
